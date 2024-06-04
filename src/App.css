@@ -1,0 +1,27 @@
+.world-map__section,
+.all-country__section,
+.search-country__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    padding: 2rem;
+}
+
+.world-map__section {
+    background-color: #FFF;
+}
+
+.world-map__img {
+    max-width: 80rem;
+}
+
+.all-country__section {
+    background-color: #CCDCDC;
+}
+
+.spinning-globe__img {
+    max-width: 40rem;
+}
