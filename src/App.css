@@ -1,5 +1,5 @@
 .world-map__section,
-.all-country__section,
+.countries-overview__section,
 .search-country__section {
     display: flex;
     flex-direction: column;
@@ -18,8 +18,60 @@
     max-width: 80rem;
 }
 
-.all-country__section {
+.countries-overview__section {
     background-color: #CCDCDC;
+}
+
+.countries-overview__list {
+    list-style-type: none;
+    column-count: 3;
+    margin: 1.5rem;
+    padding: 1.5rem;
+}
+
+.countries-overview__list li {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.flag-name__container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.countries-overview__list .flag {
+    width: 5rem;
+    margin-right: 1rem;
+}
+
+.countries-overview__list .population {
+    margin-top: 0.5rem;
+}
+
+
+
+.blue {
+    color: #5575C1;
+}
+
+.green {
+    color: #4C834B;
+}
+
+.red {
+    color: #D24E5B;
+}
+
+.yellow {
+    color: #dda550;
+}
+
+.purple {
+    color: #A653BA;
+}
+
+.default {
+    color: #808080;
 }
 
 .spinning-globe__img {

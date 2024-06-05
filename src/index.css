@@ -15,7 +15,7 @@ img {
   width: 100%;
 }
 
-h1, h2, h3, button {
+h1, h2, button {
   font-family: 'Gochi Hand', cursive;
   text-align: center;
 }
@@ -26,6 +26,10 @@ h1 {
 
 h2 {
   font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
 }
 
 p {
