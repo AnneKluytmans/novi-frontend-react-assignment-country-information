@@ -4,7 +4,8 @@
     background-color: #158A92;
     color: #FFF;
     border-radius: 2rem;
-    padding: 0.8rem 1.2rem;
-    margin: 1rem 2rem 0.5rem;
+    border: 0.2rem solid #158A92;
+    padding: 0.6rem 1.2rem;
+    margin: 1rem 2rem 1.5rem 0;
     cursor: pointer;
 }

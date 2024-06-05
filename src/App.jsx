@@ -4,15 +4,18 @@ import Header from "./components/Header/Header.jsx";
 import Button from "./components/Button/Button.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import InputField from "./components/InputField/InputField.jsx";
+import getRegionClassName from "./helpers/getRegionClassName.js";
 import spinningGlobe from './assets/spinning-globe.gif';
 import map from './assets/world_map.png';
 import './App.css';
-import getRegionClassName from "./helpers/getRegionClassName.js";
+import formatNumberToMillions from "./helpers/formatNumberToMillions.js";
 
 
 function App() {
     const [countries, setCountries] = useState([]);
     const [error, setError] = useState('');
+    const [countryInformation, setCountryInformation] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
     async function fetchCountries() {
         setError('');
@@ -29,6 +32,20 @@ function App() {
         } catch (e) {
             console.error(e);
             setError('Something went wrong with fetching the countries overview data. Try again later.');
+        }
+    }
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        setError('');
+
+        try {
+            const response = await axios.get(`https://restcountries.com/v3.1/name/${searchQuery}`);
+            console.log(response.data[0]);
+            setCountryInformation(response.data[0]);
+        } catch (e) {
+            console.error(e);
+            setError(`${searchQuery} is not a valid search query. Try again.`);
         }
     }
 
@@ -63,7 +80,31 @@ function App() {
                 <section className="search-country__section">
                     <h2>Search country information</h2>
                     <img src={spinningGlobe} alt="SpinningGlobe" className="spinning-globe__img"/>
-                    <p>Search country information</p>
+                    <form className="search-country__form" onSubmit={handleSubmit}>
+                        <InputField
+                            type="text"
+                            name="query"
+                            id="query-field"
+                            placeholder="For example France or Peru"
+                            value={searchQuery}
+                            setValue={setSearchQuery}
+                        />
+                        <Button type="submit" className="button" text="Search"/>
+                        {error && <p>{error}</p>}
+                    </form>
+                    {countryInformation &&
+                        <article className="search-country-information">
+                            <div className="flag-name__container">
+                              <img src={countryInformation.flags.svg} alt="vlag" className="flag"/>
+                              <h2>{countryInformation.name.common}</h2>
+                            </div>
+                            <p>{countryInformation.name.common} is situated in {countryInformation.subregion} and the capital
+                                is {countryInformation.capital[0]}</p>
+                            <p>It has a population of {formatNumberToMillions(countryInformation.population)} people and it borders
+                                with {countryInformation.borders.length} neighboring countries</p>
+                            <p>Websites can be found on <code>{countryInformation.tld[0]}</code> domain's</p>
+                        </article>
+                    }
                 </section>
             </main>
             <Footer text="Country Facts &copy; NOVI Hogeschool 2024"/>

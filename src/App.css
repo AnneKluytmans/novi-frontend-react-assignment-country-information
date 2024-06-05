@@ -37,17 +37,13 @@
 .flag-name__container {
     display: flex;
     align-items: flex-end;
+    margin-bottom: 1rem;
 }
 
-.countries-overview__list .flag {
+.flag {
     width: 5rem;
     margin-right: 1rem;
 }
-
-.countries-overview__list .population {
-    margin-top: 0.5rem;
-}
-
 
 
 .blue {
@@ -74,6 +70,21 @@
     color: #808080;
 }
 
+
+
 .spinning-globe__img {
     max-width: 40rem;
+}
+
+.search-country-information {
+    background-color: #A9D060;
+    opacity: 0.8;
+    border-radius: 1.4rem;
+    box-shadow: 0.25rem 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin: 1rem;
+}
+
+.search-country-information p {
+    margin-top: 0.5rem;
 }
