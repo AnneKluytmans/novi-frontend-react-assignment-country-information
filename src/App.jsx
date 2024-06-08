@@ -38,11 +38,13 @@ function App() {
     async function handleSubmit(event) {
         event.preventDefault();
         setError('');
+        setCountryInformation('');
 
         try {
             const response = await axios.get(`https://restcountries.com/v3.1/name/${searchQuery}`);
             console.log(response.data[0]);
             setCountryInformation(response.data[0]);
+            setSearchQuery('');
         } catch (e) {
             console.error(e);
             setError(`${searchQuery} is not a valid search query. Try again.`);
@@ -90,7 +92,6 @@ function App() {
                             setValue={setSearchQuery}
                         />
                         <Button type="submit" className="button" text="Search"/>
-                        {error && <p>{error}</p>}
                     </form>
                     {countryInformation &&
                         <article className="search-country-information">
@@ -101,10 +102,11 @@ function App() {
                             <p>{countryInformation.name.common} is situated in {countryInformation.subregion} and the capital
                                 is {countryInformation.capital[0]}</p>
                             <p>It has a population of {formatNumberToMillions(countryInformation.population)} people and it borders
-                                with {countryInformation.borders.length} neighboring countries</p>
+                                with {countryInformation.borders ? countryInformation.borders.length : 0} neighboring countries</p>
                             <p>Websites can be found on <code>{countryInformation.tld[0]}</code> domain's</p>
                         </article>
                     }
+                    {error && <p>{error}</p>}
                 </section>
             </main>
             <Footer text="Country Facts &copy; NOVI Hogeschool 2024"/>
