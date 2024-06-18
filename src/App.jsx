@@ -14,7 +14,7 @@ import formatNumberToMillions from "./helpers/formatNumberToMillions.js";
 function App() {
     const [countries, setCountries] = useState([]);
     const [error, setError] = useState('');
-    const [countryInformation, setCountryInformation] = useState('');
+    const [countryInformation, setCountryInformation] = useState();
     const [searchQuery, setSearchQuery] = useState('');
 
     async function fetchCountries() {
