@@ -1,0 +1,9 @@
+.input-field {
+    border: 0.2rem solid gray;
+    border-right-color: transparent;
+    border-radius: 2rem 0 0 2rem;
+    margin-right: -3.4rem;
+    padding: 0.6rem;
+    width: 30rem;
+    font-size: 1.2rem;
+}
